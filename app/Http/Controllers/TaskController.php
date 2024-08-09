@@ -8,6 +8,8 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\TaskRepository;
 use Illuminate\Http\Request;
 use Flash;
+use App\Models\Task;
+use App\Models\User;
 
 class TaskController extends AppBaseController
 {
@@ -25,9 +27,9 @@ class TaskController extends AppBaseController
     public function index(Request $request)
     {
         $tasks = $this->taskRepository->paginate(10);
-
+        $users=User::all();
         return view('tasks.index')
-            ->with('tasks', $tasks);
+            ->with('tasks', $tasks)->with('users',$users);
     }
 
     /**
@@ -125,4 +127,28 @@ class TaskController extends AppBaseController
 
         return redirect(route('tasks.index'));
     }
+
+
+         
+    public function complete(Request $request)
+    {
+
+        $tasks = Task::where('id',$request->task_id)->update(['status'=>1]);
+      
+         $task = $this->taskRepository->find($request->task_id);
+
+        Flash::success('Task completed successfully.');
+         return view('tasks.show')->with('task', $task);
+     }
+
+      public function pending(Request $request)
+    {
+
+        $tasks = Task::where('id',$request->task_id)->update(['status'=>2]);
+      
+         $task = $this->taskRepository->find($request->task_id);
+
+        Flash::success('Task pending successfully.');
+         return view('tasks.show')->with('task', $task);
+     }
 }

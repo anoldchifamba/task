@@ -35,5 +35,10 @@ class Task extends Model
         'updated_at' => 'nullable'
     ];
 
+     public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     
 }

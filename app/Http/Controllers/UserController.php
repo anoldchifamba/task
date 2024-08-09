@@ -8,6 +8,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Flash;
+use App\Models\Task;
 
 class UserController extends AppBaseController
 {
@@ -64,8 +65,10 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
+        $tasks=Task::where('user_id',$id)->paginate(10);
 
-        return view('users.show')->with('user', $user);
+        return view('users.show')->with('user', $user)
+                                 ->with('tasks', $tasks);
     }
 
     /**

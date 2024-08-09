@@ -40,7 +40,7 @@
     <!-- {!! Form::number('status', null, ['class' => 'form-control', 'required']) !!} -->
      <select name="status" class="form-control" required="">
         <!-- <option value="">---Choose Status</option> -->
-        <option value="3">to do</option>
+      <!--   <option value="3">to do</option> -->
         <option value="2">pending</option>
         <option value="1">completed</option>
 

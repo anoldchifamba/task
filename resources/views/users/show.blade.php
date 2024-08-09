@@ -10,10 +10,10 @@ User Details
                     </h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-default float-right"
+                    <!-- <a class="btn btn-default float-right"
                        href="{{ route('users.index') }}">
                                                     Back
-                                            </a>
+                                            </a> -->
                 </div>
             </div>
         </div>
@@ -25,7 +25,12 @@ User Details
                 <div class="row">
                     @include('users.show_fields')
                 </div>
+                <div class="row">
+                @include('tasks.table')
+            </div>
             </div>
         </div>
     </div>
+     
+
 @endsection

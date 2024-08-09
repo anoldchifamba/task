@@ -24,7 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
+ Route::post('pending',[App\Http\Controllers\TaskController::class,'pending'])->name('tasks.pending');
+ Route::post('complete',[App\Http\Controllers\TaskController::class,'complete'])->name('tasks.complete');
 Route::resource('tasks', App\Http\Controllers\TaskController::class);
 Route::resource('usertasks', App\Http\Controllers\UsertaskController::class);
 Route::resource('user-tasks', App\Http\Controllers\UserTaskController::class);

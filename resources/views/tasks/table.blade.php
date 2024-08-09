@@ -3,9 +3,9 @@
         <table class="table" id="tasks-table">
             <thead>
             <tr>
-                <th>User Id</th>
-                <th>Title</th>
-                <th>Description</th>
+                <!-- <th>User Id</th> -->
+                <th>Task</th>
+               
                 <th>Duedate</th>
                 <th>Priority</th>
                 <th>Status</th>
@@ -14,13 +14,42 @@
             </thead>
             <tbody>
             @foreach($tasks as $task)
+                 @if( $task->user_id==Auth::user()->id) 
+
                 <tr>
-                    <td>{{ $task->user_id }}</td>
-                    <td>{{ $task->title }}</td>
-                    <td>{{ $task->description }}</td>
+                    <!-- <td> -->
+
+                       
+                    <!-- </td> -->
+                    <td>
+                        <a href="{{ route('tasks.show', [$task->id]) }}"
+                               >
+                              <h4> {{ $task->title }}</h4> <br>
+                          <h5>
+                        {{ $task->description }}
+                    </h5>
+                        </a>
+                    </td>
                     <td>{{ $task->duedate }}</td>
-                    <td>{{ $task->priority }}</td>
-                    <td>{{ $task->status }}</td>
+                    <td>
+                        @if ($task->priority==1)
+                             1st
+                        @elseif($task->priority==2)
+                              2nd
+                        @else
+                             Normal
+                        @endif  
+                    </td>
+                    <td>
+                  
+                         @if ($task->status ==1)
+                             Completed
+                        @else
+                             Pending
+                        @endif
+
+
+                    </td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
@@ -37,6 +66,7 @@
                         {!! Form::close() !!}
                     </td>
                 </tr>
+                @endif
             @endforeach
             </tbody>
         </table>

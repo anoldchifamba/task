@@ -2,8 +2,11 @@
 
 @section('content')
     <section class="content-header">
+          @include('flash::message')
+
         <div class="container-fluid">
             <div class="row mb-2">
+
                 <div class="col-sm-6">
                     <h1>
 Task Details

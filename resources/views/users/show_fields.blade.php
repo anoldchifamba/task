@@ -11,20 +11,20 @@
 </div>
 
 <!-- Email Verified At Field -->
-<div class="col-sm-12">
+<!-- <div class="col-sm-12">
     {!! Form::label('email_verified_at', 'Email Verified At:') !!}
     <p>{{ $user->email_verified_at }}</p>
-</div>
+</div> -->
 
 <!-- Password Field -->
-<div class="col-sm-12">
+<!-- <div class="col-sm-12">
     {!! Form::label('password', 'Password:') !!}
     <p>{{ $user->password }}</p>
-</div>
+</div> -->
 
 <!-- Remember Token Field -->
-<div class="col-sm-12">
+<!-- <div class="col-sm-12">
     {!! Form::label('remember_token', 'Remember Token:') !!}
     <p>{{ $user->remember_token }}</p>
 </div>
-
+ -->
