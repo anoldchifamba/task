@@ -9,6 +9,7 @@ class Task extends Model
     public $table = 'tasks';
 
     public $fillable = [
+        'user_id',
         'title',
         'description',
         'duedate',
@@ -23,6 +24,7 @@ class Task extends Model
     ];
 
     public static array $rules = [
+        'user_id' => 'nullable',
         'title' => 'required|string|max:255',
         'description' => 'required|string|max:255',
         'duedate' => 'required',

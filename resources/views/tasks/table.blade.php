@@ -3,6 +3,7 @@
         <table class="table" id="tasks-table">
             <thead>
             <tr>
+                <th>User Id</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Duedate</th>
@@ -14,6 +15,7 @@
             <tbody>
             @foreach($tasks as $task)
                 <tr>
+                    <td>{{ $task->user_id }}</td>
                     <td>{{ $task->title }}</td>
                     <td>{{ $task->description }}</td>
                     <td>{{ $task->duedate }}</td>
